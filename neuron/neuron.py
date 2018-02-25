@@ -1,4 +1,6 @@
-import numpy as np
+from typing import Callable
+
+import numpy
 
 from .utils import sigmoid, sigmoid_derivative
 
@@ -10,20 +12,21 @@ class Neuron:
     def __str__(self):
         return str(self.w)
 
-    def __init__(self, weights, activation_function=sigmoid, activation_function_derivative=sigmoid_derivative):
+    def __init__(self, weights: numpy.ndarray,
+                 activation_function: Callable = sigmoid,
+                 activation_function_derivative: Callable = sigmoid_derivative):
         """
         :param weights: Vertical vector of neuron weights (m, 1), weights[0][0] - bias.
         :param activation_function: Neuron activation function. Sigmoid by defaults.
         :param activation_function_derivative: Derivative of activation function.
         """
-
         assert weights.shape[1] == 1, "Incorrect weight shape"
 
         self.w = weights
         self.activation_function = activation_function
         self.activation_function_derivative = activation_function_derivative
 
-    def summatory(self, input_matrix):
+    def summatory(self, input_matrix: numpy.ndarray):
         """
         Calculate result of summatory function for every example from input_matrix.
         :param input_matrix: Matrix of examples with shape (n, m). Every row is example.
@@ -32,7 +35,7 @@ class Neuron:
         """
         return input_matrix.dot(self.w)
 
-    def activation(self, summatory_result):
+    def activation(self, summatory_result: numpy.ndarray):
         """
         Calculate result of activation function for every example from summatory_result.
         :param summatory_result: Result of summatory function, vector with shape (n, 1),
@@ -42,7 +45,7 @@ class Neuron:
         """
         return self.activation_function(summatory_result)
 
-    def forward_pass(self, input_matrix):
+    def forward_pass(self, input_matrix: numpy.ndarray):
         """
         Calculate outputs of neuron
         :param input_matrix: Matrix of examples with shape (n, m).
