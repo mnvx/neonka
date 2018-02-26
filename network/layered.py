@@ -20,8 +20,9 @@ class LayeredNetwork(NetworkAbstract):
             max_weight = -min_weight
 
             if k == 0:
-                # Input layer. Only biases. Weights are inputs.
+                # Input layer. Biases = 0. Weights = 1.
                 layer_weights = numpy.zeros((prev_count + 1, count))
+                layer_weights[1:, :] = 1
             elif k == len(layers) - 1:
                 # Output layer. Weights and biases (+1).
                 layer_weights = numpy.zeros((prev_count + 1, count))

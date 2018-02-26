@@ -19,7 +19,7 @@ def forward_pass(net: NetworkAbstract, examples_batch: numpy.ndarray, expected_r
     activations = []  # will be (len(examples_batch), len(net.neurons), len(net.neurons[i]))
     for i, example in enumerate(examples_batch):
         activations.append(net.activations(example))
-        pass
+        # @todo: calculate deltas
 
 
 def back_propagation(net: NetworkAbstract, examples: numpy.ndarray, expected_results: numpy.ndarray,

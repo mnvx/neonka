@@ -17,9 +17,9 @@ net = LayeredNetwork([3, 2, 1])
 # print(net)
 
 # Custom weights
-net.set_neuron(0, 0, Neuron(numpy.array([[0, 0]]).T))
-net.set_neuron(0, 1, Neuron(numpy.array([[0, 0]]).T))
-net.set_neuron(0, 2, Neuron(numpy.array([[0, 0]]).T))
+net.set_neuron(0, 0, Neuron(numpy.array([[0, 1]]).T))
+net.set_neuron(0, 1, Neuron(numpy.array([[0, 1]]).T))
+net.set_neuron(0, 2, Neuron(numpy.array([[0, 1]]).T))
 
 net.set_neuron(1, 0, Neuron(
     numpy.array([[0, 0.7, 0.2, 0.7]]).T,
